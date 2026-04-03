@@ -42,3 +42,61 @@ float	compute_disorder(t_stack *a)
 	}
 	return ((float)mistakes / total_pairs);
 }
+
+void	ft_assign_ranks(t_stack *a)
+{
+	t_node	*current;
+	t_node	*next;
+
+	if (a->top == NULL)
+		return ;
+	current = a->top;
+	while (current != NULL)
+	{
+		current->rank = 0;
+		next = a->top;
+		while (next != NULL)
+		{
+			if (next->value < current->value)
+				current->rank += 1;
+			next = next->next;
+		}
+		current = current->next;
+	}
+}
+
+int	ft_sqrt(int n)
+{
+	int	i;
+
+	i = 1;
+	while (i * i < n)
+		i++;
+	return (i);
+}
+
+int	ft_find_max(t_stack *a)
+{
+	int		pos;
+	int		i;
+	int		val;
+	t_node	*current;
+
+	if (a->top == NULL)
+		return 0;
+	pos = 0;
+	i = 0;
+	val = a->top->value;
+	current = a->top;
+	while (current != NULL)
+	{
+		if (current->value > val)
+		{
+			val = current->value;
+			pos = i;
+		}
+		current = current->next;
+		i++;
+	}
+	return (pos);
+}

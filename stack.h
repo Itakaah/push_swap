@@ -37,8 +37,11 @@ void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
 int		ft_is_sorted(t_stack *a);
 float	compute_disorder(t_stack *a);
-int	ft_find_min(t_stack *a);
+int		ft_find_min(t_stack *a);
 void	ft_bring_to_top(t_stack *a, int pos);
 void	sort_simple(t_stack *a, t_stack *b);
+void	ft_assign_ranks(t_stack *a);
+int		ft_sqrt(int n);
+int	ft_find_max(t_stack *a);
 
 #endif
