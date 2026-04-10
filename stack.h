@@ -40,8 +40,13 @@ float	compute_disorder(t_stack *a);
 int		ft_find_min(t_stack *a);
 void	ft_bring_to_top(t_stack *a, int pos);
 void	sort_simple(t_stack *a, t_stack *b);
+void	sort_medium(t_stack *a, t_stack *b);
 void	ft_assign_ranks(t_stack *a);
 int		ft_sqrt(int n);
-int	ft_find_max(t_stack *a);
+int		ft_find_max(t_stack *a);
+int		ft_get_max_bits(int max);
+void	sort_complex(t_stack *a, t_stack *b);
+void	sort_nearly_sorted(t_stack *a);
+void	sort_adaptive(t_stack *a, t_stack *b, float disorder);
 
 #endif
