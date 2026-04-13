@@ -6,6 +6,7 @@ void	pb(t_stack *a, t_stack *b)
 		return ;
 	ft_push_top(b, a->top->value);
 	ft_pop_top(a);
+	ft_printf("pb\n");
 }
 
 void	pa(t_stack *a, t_stack *b)
@@ -14,4 +15,5 @@ void	pa(t_stack *a, t_stack *b)
 		return ;
 	ft_push_top(a, b->top->value);
 	ft_pop_top(b);
+	ft_printf("pa\n");
 }

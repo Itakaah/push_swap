@@ -18,8 +18,8 @@ int	ft_is_sorted(t_stack *a)
 
 float	compute_disorder(t_stack *a)
 {
-	int	mistakes;
-	int	total_pairs;
+	int		mistakes;
+	int		total_pairs;
 	t_node	*i;
 	t_node	*j;
 
@@ -83,7 +83,7 @@ int	ft_find_max(t_stack *a)
 	t_node	*current;
 
 	if (a->top == NULL)
-		return 0;
+		return (0);
 	pos = 0;
 	i = 0;
 	val = a->top->value;

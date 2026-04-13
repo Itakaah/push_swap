@@ -1,29 +1,31 @@
 #include "stack.h"
 
-void	sa(t_stack *a)
+void	ft_swap(t_stack *s)
 {
 	int	tmp;
 
-	if (a->top == NULL || a->top->next == NULL)
+	if (s->top == NULL || s->top->next == NULL)
 		return ;
-	tmp = a->top->value;
-	a->top->value = a->top->next->value;
-	a->top->next->value = tmp;
+	tmp = s->top->value;
+	s->top->value = s->top->next->value;
+	s->top->next->value = tmp;
+}
+
+void	sa(t_stack *a)
+{
+	ft_swap(a);
+	ft_printf("sa\n");
 }
 
 void	sb(t_stack *b)
 {
-	int	tmp;
-
-	if (b->top == NULL || b->top->next == NULL)
-		return ;
-	tmp = b->top->value;
-	b->top->value = b->top->next->value;
-	b->top->next->value = tmp;
+	ft_swap(b);
+	ft_printf("sb\n");
 }
 
 void	ss(t_stack *a, t_stack *b)
 {
-	sa(a);
-	sb(b);
+	ft_swap(a);
+	ft_swap(b);
+	ft_printf("ss\n");
 }

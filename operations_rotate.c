@@ -1,29 +1,31 @@
 #include "stack.h"
 
-void	ra(t_stack *a)
+void	ft_rotate(t_stack *s)
 {
 	int	tmp;
 
-	if (a->top == NULL || a->top->next == NULL)
+	if (s->top == NULL || s->top->next == NULL)
 		return ;
-	tmp = a->top->value;
-	ft_pop_top(a);
-	ft_push_bottom(a, tmp);
+	tmp = s->top->value;
+	ft_pop_top(s);
+	ft_push_bottom(s, tmp);
+}
+
+void	ra(t_stack *a)
+{
+	ft_rotate(a);
+	ft_printf("ra\n");
 }
 
 void	rb(t_stack *b)
 {
-	int	tmp;
-
-	if (b->top == NULL || b->top->next == NULL)
-		return ;
-	tmp = b->top->value;
-	ft_pop_top(b);
-	ft_push_bottom(b, tmp);
+	ft_rotate(b);
+	ft_printf("rb\n");
 }
 
 void	rr(t_stack *a, t_stack *b)
 {
-	ra(a);
-	rb(b);
+	ft_rotate(a);
+	ft_rotate(b);
+	ft_printf("rr\n");
 }

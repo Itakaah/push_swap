@@ -8,7 +8,7 @@ int	ft_find_min(t_stack *a)
 	t_node	*current;
 
 	if (a->top == NULL)
-		return 0;
+		return (0);
 	pos = 0;
 	i = 0;
 	val = a->top->value;
@@ -37,7 +37,9 @@ void	ft_bring_to_top(t_stack *a, int pos)
 			ra(a);
 			pos--;
 		}
-	} else {
+	}
+	else
+	{
 		while (a->size - pos > 0)
 		{
 			rra(a);

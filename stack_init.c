@@ -15,7 +15,7 @@ t_node	*ft_new_node(int value)
 
 void	ft_push_top(t_stack *a, int value)
 {
-	t_node *new_node;
+	t_node	*new_node;
 
 	new_node = ft_new_node(value);
 	if (!new_node)
@@ -62,7 +62,7 @@ void	ft_push_bottom(t_stack *a, int value)
 int	ft_pop_bottom(t_stack *a)
 {
 	t_node	*current;
-	int	res;
+	int		res;
 
 	if (a->top == NULL)
 		return (0);
