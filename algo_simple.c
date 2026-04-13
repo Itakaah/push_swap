@@ -26,7 +26,7 @@ int	ft_find_min(t_stack *a)
 	return (pos);
 }
 
-void	ft_bring_to_top(t_stack *a, int pos)
+void	ft_bring_to_top(t_stack *a, int pos, t_bench *bench)
 {
 	if (a->top == NULL)
 		return ;
@@ -34,7 +34,7 @@ void	ft_bring_to_top(t_stack *a, int pos)
 	{
 		while (pos > 0)
 		{
-			ra(a);
+			ra(a, bench);
 			pos--;
 		}
 	}
@@ -42,24 +42,24 @@ void	ft_bring_to_top(t_stack *a, int pos)
 	{
 		while (a->size - pos > 0)
 		{
-			rra(a);
+			rra(a, bench);
 			pos++;
 		}
 	}
 }
 
-void	sort_simple(t_stack *a, t_stack *b)
+void	sort_simple(t_stack *a, t_stack *b, t_bench *bench)
 {
 	int	pos;
 
 	while (!ft_is_sorted(a))
 	{
 		pos = ft_find_min(a);
-		ft_bring_to_top(a, pos);
-		pb(a, b);
+		ft_bring_to_top(a, pos, bench);
+		pb(a, b, bench);
 	}
 	while (b->top != NULL)
 	{
-		pa(a, b);
+		pa(a, b, bench);
 	}
 }

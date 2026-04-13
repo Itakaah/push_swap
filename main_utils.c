@@ -64,14 +64,14 @@ void	ft_fill_stack(t_stack *a, char **av, int start, int ac)
 	}
 }
 
-void	ft_run_algo(t_stack *a, t_stack *b, int flag, float disorder)
+void	ft_run_algo(t_stack *a, t_stack *b, int flag, float disorder, t_bench *bench)
 {
 	if (flag == 0)
-		sort_adaptive(a, b, disorder);
+		sort_adaptive(a, b, bench, disorder);
 	else if (flag == 1)
-		sort_simple(a, b);
+		sort_simple(a, b, bench);
 	else if (flag == 2)
-		sort_medium(a, b);
+		sort_medium(a, b, bench);
 	else if (flag == 3)
-		sort_complex(a, b);
+		sort_complex(a, b, bench);
 }

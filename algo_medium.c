@@ -1,6 +1,6 @@
 #include "stack.h"
 
-void	sort_medium_push(t_stack *a, t_stack *b, int chunk_max, int chunk_size)
+void	sort_medium_push(t_stack *a, t_stack *b, int chunk_max, int chunk_size, t_bench *bench)
 {
 	int	pushed;
 
@@ -9,24 +9,24 @@ void	sort_medium_push(t_stack *a, t_stack *b, int chunk_max, int chunk_size)
 	{
 		if (a->top->rank < chunk_max)
 		{
-			pb(a, b);
+			pb(a, b, bench);
 			pushed++;
 		}
 		else
-			ra(a);
+			ra(a, bench);
 	}
 }
 
-void	sort_medium_restack(t_stack *a, t_stack *b)
+void	sort_medium_restack(t_stack *a, t_stack *b, t_bench *bench)
 {
 	while (b->top != NULL)
 	{
-		ft_bring_to_top(b, ft_find_max(b));
-		pa(a, b);
+		ft_bring_to_top(b, ft_find_max(b), bench);
+		pa(a, b, bench);
 	}
 }
 
-void	sort_medium(t_stack *a, t_stack *b)
+void	sort_medium(t_stack *a, t_stack *b, t_bench *bench)
 {
 	int	chunk_size;
 	int	chunk_max;
@@ -38,8 +38,8 @@ void	sort_medium(t_stack *a, t_stack *b)
 	chunk_max = chunk_size;
 	while (a->top != NULL)
 	{
-		sort_medium_push(a, b, chunk_max, chunk_size);
+		sort_medium_push(a, b, chunk_max, chunk_size, bench);
 		chunk_max += chunk_size;
 	}
-	sort_medium_restack(a, b);
+	sort_medium_restack(a, b, bench);
 }

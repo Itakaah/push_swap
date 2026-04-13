@@ -10,21 +10,24 @@ void	ft_rrotate(t_stack *s)
 	ft_push_top(s, value);
 }
 
-void	rra(t_stack *a)
+void	rra(t_stack *a, t_bench *bench)
 {
 	ft_rrotate(a);
+	bench->rra++;
 	ft_printf("rra\n");
 }
 
-void	rrb(t_stack *b)
+void	rrb(t_stack *b, t_bench *bench)
 {
 	ft_rrotate(b);
+	bench->rrb++;
 	ft_printf("rrb\n");
 }
 
-void	rrr(t_stack *a, t_stack *b)
+void	rrr(t_stack *a, t_stack *b, t_bench *bench)
 {
 	ft_rrotate(a);
 	ft_rrotate(b);
+	bench->rrr++;
 	ft_printf("rrr\n");
 }
