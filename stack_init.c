@@ -47,7 +47,11 @@ void	ft_push_bottom(t_stack *a, int value)
 	t_node	*new_node;
 
 	if (a->top == NULL)
+	{
+		a->top = ft_new_node(value);
+		a->size++;
 		return ;
+	}
 	current = a->top;
 	while (current->next != NULL)
 		current = current->next;

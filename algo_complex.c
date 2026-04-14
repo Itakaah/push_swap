@@ -13,17 +13,19 @@ int	ft_get_max_bits(int max)
 	return (bits);
 }
 
-void	sort_complex_pass(t_stack *a, t_stack *b, int bit, int size, t_bench *bench)
+void	sort_complex_pass(t_stack *a, t_stack *b, int bit, t_bench *bench)
 {
 	int	j;
+	int	size;
 
+	size = a->size;
 	j = 0;
 	while (j < size)
 	{
 		if (((a->top->rank >> bit) & 1) == 0)
-			ra(a, bench);
-		else
 			pb(a, b, bench);
+		else
+			ra(a, bench);
 		j++;
 	}
 	while (b->top != NULL)
@@ -33,22 +35,14 @@ void	sort_complex_pass(t_stack *a, t_stack *b, int bit, int size, t_bench *bench
 void	sort_complex(t_stack *a, t_stack *b, t_bench *bench)
 {
 	int	max_bits;
-	int	size;
 	int	i;
 
 	ft_assign_ranks(a);
 	max_bits = ft_get_max_bits(a->size - 1);
-	size = a->size;
 	i = 0;
 	while (i < max_bits)
 	{
-		sort_complex_pass(a, b, i, size, bench);
-		i++;
-	}
-	i = 0;
-	while (i < a->size)
-	{
-		rra(a, bench);
+		sort_complex_pass(a, b, i, bench);
 		i++;
 	}
 }

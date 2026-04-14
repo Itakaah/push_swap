@@ -11,13 +11,10 @@ void	ft_print_disorder(float disorder)
 	free(str);
 }
 
-void	ft_print_strategy(int flag)
+void	ft_print_strategy(int flag, float disorder)
 {
-	write(2, "[bench] strategy: ", sizeof("[bench] strategy: ") - 1);
-	if (flag == 0)
-		write(2, "Adaptive / O(n log n)\n",
-			sizeof("Adaptive / O(n log n)\n") - 1);
-	else if (flag == 1)
+	write(2, "[bench] strategy: ", 18);
+	if (flag == 1)
 		write(2, "Simple / O(n\xc2\xb2)\n",
 			sizeof("Simple / O(n\xc2\xb2)\n") - 1);
 	else if (flag == 2)
@@ -26,6 +23,15 @@ void	ft_print_strategy(int flag)
 	else if (flag == 3)
 		write(2, "Complex / O(n log n)\n",
 			sizeof("Complex / O(n log n)\n") - 1);
+	else if (disorder < 0.2)
+		write(2, "Adaptive / O(n\xc2\xb2)\n",
+			sizeof("Adaptive / O(n\xc2\xb2)\n") - 1);
+	else if (disorder < 0.5)
+		write(2, "Adaptive / O(n\xe2\x88\x9an)\n",
+			sizeof("Adaptive / O(n\xe2\x88\x9an)\n") - 1);
+	else
+		write(2, "Adaptive / O(n log n)\n",
+			sizeof("Adaptive / O(n log n)\n") - 1);
 }
 
 void	ft_print_total_ops(t_bench *bench)
@@ -87,17 +93,4 @@ void	ft_print_op_counts2(t_bench *bench)
 	str = ft_itoa(bench->rr);
 	write(2, str, ft_strlen(str));
 	free(str);
-	write(2, " rra: ", 6);
-	str = ft_itoa(bench->rra);
-	write(2, str, ft_strlen(str));
-	free(str);
-	write(2, " rrb: ", 6);
-	str = ft_itoa(bench->rrb);
-	write(2, str, ft_strlen(str));
-	free(str);
-	write(2, " rrr: ", 6);
-	str = ft_itoa(bench->rrr);
-	write(2, str, ft_strlen(str));
-	free(str);
-	write(2, "\n", 1);
 }

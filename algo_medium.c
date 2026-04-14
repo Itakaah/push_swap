@@ -1,13 +1,13 @@
 #include "stack.h"
 
-void	sort_medium_push(t_stack *a, t_stack *b, int chunk_max, int chunk_size, t_bench *bench)
+void	sort_medium_push(t_stack *a, t_stack *b, t_chunk *chunk, t_bench *bench)
 {
 	int	pushed;
 
 	pushed = 0;
-	while (pushed < chunk_size && a->top != NULL)
+	while (pushed < chunk->size && a->top != NULL)
 	{
-		if (a->top->rank < chunk_max)
+		if (a->top->rank < chunk->max)
 		{
 			pb(a, b, bench);
 			pushed++;
@@ -28,18 +28,17 @@ void	sort_medium_restack(t_stack *a, t_stack *b, t_bench *bench)
 
 void	sort_medium(t_stack *a, t_stack *b, t_bench *bench)
 {
-	int	chunk_size;
-	int	chunk_max;
+	t_chunk	chunk;
 
 	if (a->top == NULL)
 		return ;
 	ft_assign_ranks(a);
-	chunk_size = ft_sqrt(a->size);
-	chunk_max = chunk_size;
+	chunk.size = ft_sqrt(a->size);
+	chunk.max = chunk.size;
 	while (a->top != NULL)
 	{
-		sort_medium_push(a, b, chunk_max, chunk_size, bench);
-		chunk_max += chunk_size;
+		sort_medium_push(a, b, &chunk, bench);
+		chunk.max += chunk.size;
 	}
 	sort_medium_restack(a, b, bench);
 }

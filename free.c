@@ -2,7 +2,7 @@
 
 void	ft_free(t_stack *a, t_stack *b)
 {
-	t_node *next;
+	t_node	*next;
 
 	while (a->top != NULL)
 	{

@@ -5,7 +5,7 @@ int	ft_is_digit(char c)
 	return (c >= '0' && c <= '9');
 }
 
-long	ft_atoi(const char *nptr)
+long	ft_atol(const char *nptr)
 {
 	int		sign;
 	long	result;
@@ -38,16 +38,16 @@ int	ft_is_valid_int(char *str)
 		return (0);
 	i = 0;
 	if (str[0] == '+' || str[0] == '-')
-	{
 		i++;
-	}
+	if (!str[i])
+		return (0);
 	while (str[i])
 	{
 		if (!(ft_is_digit(str[i])))
 			return (0);
 		i++;
 	}
-	if (ft_atoi(str) > 2147483647 || ft_atoi(str) < -2147483648)
+	if (ft_atol(str) > 2147483647 || ft_atol(str) < -2147483648)
 		return (0);
 	return (1);
 }
