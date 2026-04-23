@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_init.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ausmanov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/10 22:05:04 by ausmanov          #+#    #+#             */
+/*   Updated: 2026/04/20 12:00:00 by ausmanov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "stack.h"
 
 t_node	*ft_new_node(int value)
@@ -8,6 +19,7 @@ t_node	*ft_new_node(int value)
 	if (!node)
 		return (NULL);
 	node->value = value;
+	node->rank = 0;
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);

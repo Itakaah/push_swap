@@ -1,14 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations_swap.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ausmanov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/10 22:05:04 by ausmanov          #+#    #+#             */
+/*   Updated: 2026/04/20 12:00:00 by ausmanov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "stack.h"
 
 void	ft_swap(t_stack *s)
 {
-	int	tmp;
+	int	tmp_val;
+	int	tmp_rank;
 
 	if (s->top == NULL || s->top->next == NULL)
 		return ;
-	tmp = s->top->value;
+	tmp_val = s->top->value;
+	tmp_rank = s->top->rank;
 	s->top->value = s->top->next->value;
-	s->top->next->value = tmp;
+	s->top->rank = s->top->next->rank;
+	s->top->next->value = tmp_val;
+	s->top->next->rank = tmp_rank;
 }
 
 void	sa(t_stack *a, t_bench *bench)

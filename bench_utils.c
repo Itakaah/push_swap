@@ -1,14 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bench_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ausmanov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/10 22:05:04 by ausmanov          #+#    #+#             */
+/*   Updated: 2026/04/20 12:00:00 by ausmanov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "stack.h"
 
 void	ft_print_disorder(float disorder)
 {
+	int		total;
+	int		dec;
 	char	*str;
 
+	total = (int)(disorder * 10000 + 0.5f);
+	dec = total % 100;
 	write(2, "[bench] disorder: ", 18);
-	str = ft_itoa((int)(disorder * 100));
+	str = ft_itoa(total / 100);
 	write(2, str, ft_strlen(str));
-	write(2, "%\n", 2);
 	free(str);
+	write(2, ".", 1);
+	if (dec < 10)
+		write(2, "0", 1);
+	str = ft_itoa(dec);
+	write(2, str, ft_strlen(str));
+	free(str);
+	write(2, "%\n", 2);
 }
 
 void	ft_print_strategy(int flag, float disorder)

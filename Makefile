@@ -25,20 +25,24 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	make -C libft
-	make -C ft_printf
+$(NAME): $(OBJS) $(LIBFT) $(PRINTF)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
+
+$(LIBFT):
+	$(MAKE) -C libft
+
+$(PRINTF):
+	$(MAKE) -C ft_printf
 
 clean:
 	rm -f $(OBJS)
-	make -C libft clean
-	make -C ft_printf clean
+	$(MAKE) -C libft clean
+	$(MAKE) -C ft_printf clean
 
 fclean: clean
 	rm -f $(NAME)
-	make -C libft fclean
-	make -C ft_printf fclean
+	$(MAKE) -C libft fclean
+	$(MAKE) -C ft_printf fclean
 
 re: fclean all
 

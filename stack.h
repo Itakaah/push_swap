@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ausmanov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/10 22:05:04 by ausmanov          #+#    #+#             */
+/*   Updated: 2026/04/20 12:00:00 by ausmanov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #ifndef STACK_H
 # define STACK_H
 
@@ -78,7 +89,7 @@ void	sort_adaptive(t_stack *a, t_stack *b, t_bench *bench, float disorder);
 void	ft_init_stacks(t_stack *a, t_stack *b);
 int		ft_get_flag(char **av);
 int		ft_get_start(char **av);
-void	ft_fill_stack(t_stack *a, char **av, int start, int ac);
+int		ft_fill_stack(t_stack *a, char **av, int start, int ac);
 void	ft_run_algo(t_stack *a, t_stack *b, int flag, t_bench *bench);
 void	ft_free(t_stack *a, t_stack *b);
 void	ft_print_disorder(float disorder);

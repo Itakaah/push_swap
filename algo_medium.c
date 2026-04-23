@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo_medium.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ausmanov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/10 22:05:04 by ausmanov          #+#    #+#             */
+/*   Updated: 2026/04/20 12:00:00 by ausmanov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "stack.h"
 
 void	sort_medium_push(t_stack *a, t_stack *b, t_chunk *chunk, t_bench *bench)
@@ -19,9 +30,27 @@ void	sort_medium_push(t_stack *a, t_stack *b, t_chunk *chunk, t_bench *bench)
 
 void	sort_medium_restack(t_stack *a, t_stack *b, t_bench *bench)
 {
+	int	pos;
+
 	while (b->top != NULL)
 	{
-		ft_bring_to_top(b, ft_find_max(b), bench);
+		pos = ft_find_max(b);
+		if (pos <= b->size / 2)
+		{
+			while (pos > 0)
+			{
+				rb(b, bench);
+				pos--;
+			}
+		}
+		else
+		{
+			while (b->size - pos > 0)
+			{
+				rrb(b, bench);
+				pos++;
+			}
+		}
 		pa(a, b, bench);
 	}
 }
