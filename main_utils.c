@@ -60,16 +60,17 @@ int	ft_fill_stack(t_stack *a, char **av, int start, int ac)
 {
 	int	i;
 
+	if (ac - start == 1 && ft_strchr(av[start], ' '))
+		return (ft_fill_from_split(a, av[start]));
 	i = start;
 	while (i < ac)
 	{
-		if (ft_is_valid_int(av[i]))
-			ft_push_bottom(a, ft_atol(av[i]));
-		else
+		if (!ft_is_valid_int(av[i]))
 		{
 			write(2, "Error\n", 6);
 			return (1);
 		}
+		ft_push_bottom(a, ft_atol(av[i]));
 		i++;
 	}
 	if (ft_has_duplicates(a))

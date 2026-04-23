@@ -63,6 +63,35 @@ int	ft_is_valid_int(char *str)
 	return (1);
 }
 
+int	ft_fill_from_split(t_stack *a, char *arg)
+{
+	char	**tokens;
+	int		i;
+
+	tokens = ft_split(arg, ' ');
+	if (!tokens)
+		return (1);
+	i = 0;
+	while (tokens[i])
+	{
+		if (!ft_is_valid_int(tokens[i]))
+		{
+			write(2, "Error\n", 6);
+			ft_free_tab(tokens);
+			return (1);
+		}
+		ft_push_bottom(a, ft_atol(tokens[i]));
+		i++;
+	}
+	ft_free_tab(tokens);
+	if (ft_has_duplicates(a))
+	{
+		write(2, "Error\n", 6);
+		return (1);
+	}
+	return (0);
+}
+
 int	ft_has_duplicates(t_stack *a)
 {
 	t_node	*current;

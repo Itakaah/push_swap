@@ -106,6 +106,8 @@ void	sort_simple(t_stack *a, t_stack *b, t_bench *bench)
 	{
 		pos = ft_find_min(a);
 		ft_bring_to_top(a, pos, bench);
+		if (ft_is_sorted(a))
+			break ;
 		pb(a, b, bench);
 	}
 	while (b->top != NULL)
