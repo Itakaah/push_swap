@@ -76,14 +76,20 @@ void	ft_assign_ranks(t_stack *a)
 	}
 }
 
-int	ft_sqrt(int n)
+int	ft_is_reverse_sorted(t_stack *a)
 {
-	int	i;
+	t_node	*current;
 
-	i = 1;
-	while (i * i < n)
-		i++;
-	return (i);
+	if (a->top == NULL || a->top->next == NULL)
+		return (1);
+	current = a->top;
+	while (current->next != NULL)
+	{
+		if (current->value < current->next->value)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }
 
 int	ft_find_max(t_stack *a)

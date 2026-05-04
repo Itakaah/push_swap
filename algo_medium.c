@@ -11,6 +11,16 @@
 /* ************************************************************************** */
 #include "stack.h"
 
+int	ft_sqrt(int n)
+{
+	int	i;
+
+	i = 1;
+	while (i * i < n)
+		i++;
+	return (i);
+}
+
 void	sort_medium_push(t_stack *a, t_stack *b, t_chunk *chunk, t_bench *bench)
 {
 	int	pushed;
@@ -59,8 +69,13 @@ void	sort_medium(t_stack *a, t_stack *b, t_bench *bench)
 {
 	t_chunk	chunk;
 
-	if (a->top == NULL)
+	if (a->top == NULL || ft_is_sorted(a))
 		return ;
+	if (ft_is_reverse_sorted(a))
+	{
+		sort_simple(a, b, bench);
+		return ;
+	}
 	ft_assign_ranks(a);
 	chunk.size = ft_sqrt(a->size);
 	chunk.max = chunk.size;

@@ -48,11 +48,20 @@ void	sort_complex(t_stack *a, t_stack *b, t_bench *bench)
 	int	max_bits;
 	int	i;
 
+	if (ft_is_sorted(a))
+		return ;
+	if (ft_is_reverse_sorted(a))
+	{
+		sort_simple(a, b, bench);
+		return ;
+	}
 	ft_assign_ranks(a);
 	max_bits = ft_get_max_bits(a->size - 1);
 	i = 0;
 	while (i < max_bits)
 	{
+		if (ft_is_sorted(a))
+			break ;
 		sort_complex_pass(a, b, i, bench);
 		i++;
 	}

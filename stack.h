@@ -58,6 +58,7 @@ void	ft_pop_top(t_stack *a);
 void	ft_push_bottom(t_stack *a, int value);
 int		ft_pop_bottom(t_stack *a);
 int		ft_is_sorted(t_stack *a);
+int		ft_is_reverse_sorted(t_stack *a);
 float	compute_disorder(t_stack *a);
 void	ft_assign_ranks(t_stack *a);
 int		ft_sqrt(int n);
